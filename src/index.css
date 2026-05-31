@@ -1,6 +1,164 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@autility flex-center{
+html,
+body {
+  width: 100%;
+  background-color: #0a1a10;
+  color: white;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* ── Utilitários ───────────────────────────────────── */
+@utility flex-center {
   @apply flex justify-center items-center;
 }
 
+/* ── Variáveis ─────────────────────────────────────── */
+:root {
+  --color-primary:       #52b788;
+  --color-primary-light: #95d5b2;
+  --color-text:          #ffffff;
+  --color-muted:         #c8e6d0;
+}
+
+/* ════════════════════════════════════════════════════
+   HERO
+   – igual ao projeto de referência:
+   – position: relative + z-index alto para ficar na
+     frente do div.video-brackground
+   ════════════════════════════════════════════════════ */
+#hero,
+.backgrond-principal {
+  position: relative;
+  z-index: 10;
+  min-height: 100svh;
+  width: 100%;
+  background: transparent; /* sem fundo — o vídeo aparece atrás */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ════════════════════════════════════════════════════
+   VÍDEO
+   – igual ao projeto de referência:
+   – position: absolute inset-0  →  cobre o mesmo
+     espaço do hero, mas fica atrás (sem z-index)
+   ════════════════════════════════════════════════════ */
+.video-brackground {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.video-brackground video {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Título ────────────────────────────────────────── */
+.title {
+  font-size: clamp(3rem, 10vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.text-gradient {
+  display: inline-block;
+  background: linear-gradient(to bottom, #ffffff, #52b788);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Conteúdo ──────────────────────────────────────── */
+.body {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.space {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.space > p:first-child {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+.view-plate {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.subtitle {
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--color-muted);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Botão ─────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 0.85rem 2rem;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ── Responsivo ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .backgrond-principal {
+    padding: 5rem 1.25rem 3rem;
+  }
+}
